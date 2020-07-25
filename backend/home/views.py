@@ -21,8 +21,8 @@ def questions(request):
     jsonResponse['Questions'] = questionList
     return JsonResponse(jsonResponse)
 
-@csrf_exempt 
-def feedback(request):
+#@csrf_exempt 
+#def feedback(request):
     
 
 @csrf_exempt    
