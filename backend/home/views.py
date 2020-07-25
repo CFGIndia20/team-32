@@ -24,10 +24,13 @@ def questions(request,phone_no):
     
     questions = Question.objects.all()
     for question in questions:
+        langQuestionText = translate(question.question,lang)
+        langQuestionAudio = textToSpeech(langQuestionText, lang)
         json = {
             'Id':question.id,
             'Question':question.question,
-            'LangQuestionText': translate(),
+            'LangQuestionText': langQuestionText,
+            'LangQuestionAudio': langQuestionAudio,
         }
         questionList.append(json)
     
@@ -36,7 +39,7 @@ def questions(request,phone_no):
 
 @csrf_exempt 
 def feedback(request):
-    obj = json.load(reques.POST)
+    obj = json.load(request.POST)
     phone_no = obj["phone_no"]
     user = User.objects.filter(phone_no = phone_no)[0]
     feedbacks = obj["Feedback"]
