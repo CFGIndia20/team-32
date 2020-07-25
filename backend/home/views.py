@@ -12,6 +12,8 @@ from google.cloud import speech_v1
 from google.cloud.speech_v1 import enums
 import io
 import soundfile
+from .report import send_message
+import threading
 
 # Create your views here.
 
@@ -37,6 +39,22 @@ def questions(request,phone_no):
     
     jsonResponse['Questions'] = questionList
     return JsonResponse(jsonResponse)
+
+def reports():
+    string = ""
+    units = Unit.objects.all()
+    for unit in units:
+        users = Stay.objects.filter(UnitID = unit.id)
+        print(unit.id)
+        for user in users:
+            currentUser = User.objects.filter(id = user.UserID.id)[0]
+            string += "Age = "+str(currentUser.age)+ "  Number of people = "+str(user.members)+"  Duration: "+ str(user.startDate)+ " - "+ str(user.endDate)+ "\n"
+
+        donors = Donate.objects.filter(unit_no = unit.id)
+        for donor in donors:
+            currentDonor = Donor.objects.filter(id = donor.donor_id.id)[0]
+            phoneNumber = "whatsapp:+91" + currentDonor.phone_no
+            send_message(string,phoneNumber)
 
 @csrf_exempt 
 def feedback(request):
@@ -139,3 +157,6 @@ def speechToText(local_file_path, language):
         resultString = resultString + format(alternative.transcript)
 
     return resultString
+
+t = threading.Timer(10.0, reports)
+t.start()
