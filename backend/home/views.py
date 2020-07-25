@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Question,Feedback,User
 import json
-import pandas as pd
+from .databaseEntry import addQuestions
 from django.views.decorators.csrf import csrf_exempt
 from google.cloud import translate_v2
 from gtts import gTTS
@@ -12,6 +12,7 @@ import io
 import soundfile
 
 # Create your views here.
+
 def questions(request):
     jsonResponse = {}
     questionList = []
@@ -26,6 +27,35 @@ def questions(request):
     jsonResponse['Questions'] = questionList
     return JsonResponse(jsonResponse)
 
+<<<<<<< HEAD
+#@csrf_exempt 
+#def feedback(request):
+    
+
+@csrf_exempt    
+def loadQuestions(request):
+    if request.method != "POST":
+        return JsonResponse({"data":"use post"})
+
+    questions = addQuestions()
+    for question in questions:
+        temp = Question(id = question["id"],question = question["Question"])
+        temp.save()
+
+    return JsonResponse({"success":"True"})
+
+@csrf_exempt    
+def loadFeedback(request):
+    if request.method != "POST":
+        return JsonResponse({"data":"use post"})
+
+    feedbacks = addFeedbacks()
+    for feedback in feedbacks:
+        temp = Feedback(id = question["id"],question = question["Question"])
+        temp.save()
+
+    return JsonResponse({"success":"True"})
+=======
 def translate(sourceText, targetLanguage):
     client = translate_v2.Client()
     response = client.translate(sourceText,target_language=target_language)
@@ -66,3 +96,4 @@ def speechToText(local_file_path, language):
     		resultString = resultString + format(alternative.transcript)
 
     	return resultString
+>>>>>>> origin/master
