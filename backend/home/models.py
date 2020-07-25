@@ -27,7 +27,7 @@ class Stays(models.Model):
     UserID = models.ForeignKey(User,on_delete = models.CASCADE)
     UnitID = models.ForeignKey(Units, on_delete = CASCADE)
     members = models.IntegerField()
-    startDate = models.#DD/MM/YYYY
-    endDate = models.#DD/MM/YYYY
+    startDate = models.DateField()
+    endDate = models.DateField()
 
 

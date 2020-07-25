@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Question,Feedback,User
 import json
+import datetime
 from .databaseEntry import addQuestions
 from django.views.decorators.csrf import csrf_exempt
 from google.cloud import translate_v2
@@ -49,6 +50,46 @@ def loadFeedback(request):
     feedbacks = addFeedbacks()
     for feedback in feedbacks:
         temp = Feedback(id = question["id"],question = question["Question"])
+        temp.save()
+
+    return JsonResponse({"success":"True"})
+
+@csrf_exempt
+def loadUsers(request)
+    if request.method != "POST":
+        return JsonResponse({"data":"use post"})
+
+    users = addUsers()
+    for user in users:
+        temp = Users(id = user["id"],name = user["name"],age = user["Age"],phone_no =  user["phone_no"],language = user[language])
+        temp.save()
+
+    return JsonResponse({"success":"True"})
+    
+@csrf_exempt
+def loadUnits(request)
+    if request.method != "POST":
+        return JsonResponse({"data":"use post"})
+
+    units = addUnits()
+    for unit in units:
+        temp = Units(id = unit["id"],location = users["location"])
+        temp.save()
+
+    return JsonResponse({"success":"True"})
+
+@csrf_exempt
+def loadStays(request)
+    if request.method != "POST":
+        return JsonResponse({"data":"use post"})
+
+    stays = addStays()
+    for stay in stays:
+        StDate = stay["startDate"]
+        date1 = datetime.strptime(StDate,'%d/%m/%y')
+        EdDate = stay["endDate"]
+        date2 = datetime.strptime(EdDate,'%d/%m/%y')
+        temp = Stays(UserID = stay["UserID"],UnitID = stay["UnitID"], members = stay["members"], startDate = date1, endDate = date2)
         temp.save()
 
     return JsonResponse({"success":"True"})
