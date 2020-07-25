@@ -7,6 +7,9 @@ from .databaseEntry import addQuestions
 from django.views.decorators.csrf import csrf_exempt
 from google.cloud import translate_v2
 from gtts import gTTS
+from google.cloud import speech_v1
+from google.cloud.speech_v1 import enums
+import io
 import soundfile
 
 # Create your views here.
@@ -105,7 +108,6 @@ def textToSpeech(sourceText, sourceLanguage):
 
 def speechToText(local_file_path, language):
     audio_samples, sample_rate = soundfile.read(local_file_path, dtype='int16')
-    	print(sample_rate)
     	client = speech_v1.SpeechClient()
 
     	# local_file_path = 'resources/brooklyn_bridge.raw'
@@ -128,8 +130,7 @@ def speechToText(local_file_path, language):
     	audio = {"content": content}
 
     	response = client.recognize(config, audio)
-    	print(response)
-    	resultString="";
+    	resultString=""
     	for result in response.results:
     		# First alternative is the most probable result
     		alternative = result.alternatives[0]
