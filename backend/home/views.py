@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Question,Feedback,User
+from .models import Question,Feedback,User,Unit,Stay,Donor,Donate
 import json
-from .databaseEntry import addQuestions,addUsers,addFeedbacks
+from .databaseEntry import addQuestions,addUsers,addFeedbacks,addData
 import datetime
 from .databaseEntry import addQuestions
 from django.views.decorators.csrf import csrf_exempt
@@ -15,10 +15,7 @@ import soundfile
 
 # Create your views here.
 
-def questions(request,phone_no):
-    user = User.objects.filter(phone_no = phone_no)[0]
-    lang = user.language
-
+def questions(request):
     jsonResponse = {}
     questionList = []
     
@@ -27,7 +24,6 @@ def questions(request,phone_no):
         json = {
             'Id':question.id,
             'Question':question.question,
-            'LangQuestionText': translate(),
         }
         questionList.append(json)
     
@@ -36,7 +32,7 @@ def questions(request,phone_no):
 
 @csrf_exempt 
 def feedback(request):
-    obj = json.load(reques.POST)
+    obj = json.load(request.POST)
     phone_no = obj["phone_no"]
     user = User.objects.filter(phone_no = phone_no)[0]
     feedbacks = obj["Feedback"]
@@ -45,8 +41,54 @@ def feedback(request):
     
     for feedback in feedbacks:
         question = Question.objects.filter(feedback["id"])[0]
-        temp = Feedback(id = last_id,question_id = question,user_id = user,unit_no = int(feedback["unit_no"]),response = int(feedback["Response"]) )
+        temp = Feedback(id = last_id,question_id = question,user_id = user,unit_no = int(feedback["unit_no"]),response = int(feedback["Response"]))
+        temp.save()       
     
+def loadData(request):
+    if request.method != "POST":
+        return JsonResponse({"data":"use post"})
+
+    questions,feedbacks,users,units,stays,donors,donates = addData()
+    for question in questions:
+        temp = Question(id = question["id"],question = question["Question"])
+        temp.save()
+
+    
+    for user in users:
+        temp = User(id = user["id"],name = user["Name"],age = user["Age"],address = user["Address"],phone_no = user["Phone no"],language = user["Language"])
+        temp.save()
+
+    for feedback in feedbacks:
+        user = User.objects.filter(id = int(feedback["User id"]))[0]
+        question = Question.objects.filter(id = int(feedback["Qid"]))[0]
+        temp = Feedback(id = feedback["id"],question_id = question,user_id = user,unit_no = feedback["Unit no."],response = feedback["Response"] )
+        temp.save()
+
+    for unit in units:
+        temp = Unit(id =int(unit["id"]),location = unit["location"])
+        temp.save()
+    
+    for stay in stays:
+        StDate = stay["startDate"]
+        date1 = datetime.strptime(StDate,'%d/%m/%y')
+        EdDate = stay["endDate"]
+        date2 = datetime.strptime(EdDate,'%d/%m/%y')
+        user = User.objects.filter(id = int(stay["User id"]))[0]
+        unit_no = Unit.objects.filter(id = int(stay["Unit id"]))[0]
+        temp = Stay(UserID = user,UnitID = unit_no,members = int(stay["members"]),startDate = date1,endDate = date2)
+        temp.save()
+    
+    for donor in donors:
+        temp = Donor(id =int(donor["id"]),phone_no = donor["phoneNo"])
+        temp.save()
+
+    for donate in donates:
+        unit_no = Unit.objects.filter(id = int(donate["unitId"]))[0]
+        donor_id = Donor.objects.filter(id = int(donate["donorId"]))[0]
+        temp = Donate(unit_no = unit_no,donor_id = donor_id)
+        temp.save()
+
+    return JsonResponse({"success":"True"})
 
 @csrf_exempt    
 def loadQuestions(request):
