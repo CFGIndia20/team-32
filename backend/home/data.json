@@ -1,284 +1,384 @@
 {
   "Question": [
-    { "id": "1", "Question": "How was cleanliness?" },
-    { "id": "2", "Question": "how was the food qualty?" },
-    { "id": "3", "Question": "how clean was water provided?" },
-    { "id": "4", "Question": "how was the neighbourhood?" }
+    { "id": "1", "question": "How was cleanliness?" },
+    { "id": "2", "question": "how was the food qualty?" },
+    { "id": "3", "question": "how clean was water provided?" },
+    { "id": "4", "question": "how was the neighbourhood?" }
   ],
   "Feedback": [
     {
       "id": "1",
-      "Qid": "1",
-      "User id": "1",
-      "Response": "3",
-      "Unit no.": "555"
+      "qid": "1",
+      "userid": "1",
+      "response": "3",
+      "unitid": "555"
     },
     {
       "id": "2",
-      "Qid": "2",
-      "User id": "1",
-      "Response": "4",
-      "Unit no.": "555"
+      "qid": "2",
+      "userid": "1",
+      "response": "4",
+      "unitid": "555"
     },
     {
       "id": "3",
-      "Qid": "3",
-      "User id": "1",
-      "Response": "3",
-      "Unit no.": "555"
+      "qid": "3",
+      "userid": "1",
+      "response": "3",
+      "unitid": "555"
     },
     {
       "id": "4",
-      "Qid": "4",
-      "User id": "1",
-      "Response": "5",
-      "Unit no.": "555"
+      "qid": "4",
+      "userid": "1",
+      "response": "5",
+      "unitid": "555"
     },
     {
       "id": "5",
-      "Qid": "1",
-      "User id": "2",
-      "Response": "3",
-      "Unit no.": "555"
+      "qid": "1",
+      "userid": "2",
+      "response": "3",
+      "unitid": "555"
     },
     {
       "id": "6",
-      "Qid": "2",
-      "User id": "2",
-      "Response": "4",
-      "Unit no.": "555"
+      "qid": "2",
+      "userid": "2",
+      "response": "4",
+      "unitid": "555"
     },
     {
       "id": "7",
-      "Qid": "3",
-      "User id": "2",
-      "Response": "4",
-      "Unit no.": "555"
+      "qid": "3",
+      "userid": "2",
+      "response": "4",
+      "unitid": "555"
     },
     {
       "id": "8",
-      "Qid": "4",
-      "User id": "2",
-      "Response": "3",
-      "Unit no.": "555"
+      "qid": "4",
+      "userid": "2",
+      "response": "3",
+      "unitid": "555"
     },
     {
       "id": "9",
-      "Qid": "1",
-      "User id": "3",
-      "Response": "4",
-      "Unit no.": "555"
+      "qid": "1",
+      "userid": "3",
+      "response": "4",
+      "unitid": "555"
     },
     {
       "id": "10",
-      "Qid": "2",
-      "User id": "3",
-      "Response": "3",
-      "Unit no.": "555"
+      "qid": "2",
+      "userid": "3",
+      "response": "3",
+      "unitid": "555"
     },
     {
       "id": "11",
-      "Qid": "3",
-      "User id": "3",
-      "Response": "5",
-      "Unit no.": "555"
+      "qid": "3",
+      "userid": "3",
+      "response": "5",
+      "unitid": "555"
     },
     {
       "id": "12",
-      "Qid": "4",
-      "User id": "3",
-      "Response": "2",
-      "Unit no.": "555"
+      "qid": "4",
+      "userid": "3",
+      "response": "2",
+      "unitid": "555"
     },
     {
       "id": "13",
-      "Qid": "1",
-      "User id": "4",
-      "Response": "2",
-      "Unit no.": "555"
+      "qid": "1",
+      "userid": "4",
+      "response": "2",
+      "unitid": "555"
     },
     {
       "id": "14",
-      "Qid": "2",
-      "User id": "4",
-      "Response": "4",
-      "Unit no.": "555"
+      "qid": "2",
+      "userid": "4",
+      "response": "4",
+      "unitid": "555"
     },
     {
       "id": "15",
-      "Qid": "3",
-      "User id": "4",
-      "Response": "3",
-      "Unit no.": "555"
+      "qid": "3",
+      "userid": "4",
+      "response": "3",
+      "unitid": "555"
     },
     {
       "id": "16",
-      "Qid": "4",
-      "User id": "4",
-      "Response": "5",
-      "Unit no.": "555"
+      "qid": "4",
+      "userid": "4",
+      "response": "5",
+      "unitid": "555"
     },
     {
       "id": "17",
-      "Qid": "1",
-      "User id": "1",
-      "Response": "3",
-      "Unit no.": "777"
+      "qid": "1",
+      "userid": "1",
+      "response": "3",
+      "unitid": "777"
     },
     {
       "id": "18",
-      "Qid": "2",
-      "User id": "1",
-      "Response": "4",
-      "Unit no.": "777"
+      "qid": "2",
+      "userid": "1",
+      "response": "4",
+      "unitid": "777"
     },
     {
       "id": "19",
-      "Qid": "3",
-      "User id": "1",
-      "Response": "3",
-      "Unit no.": "777"
+      "qid": "3",
+      "userid": "1",
+      "response": "3",
+      "unitid": "777"
     },
     {
       "id": "20",
-      "Qid": "4",
-      "User id": "1",
-      "Response": "5",
-      "Unit no.": "777"
+      "qid": "4",
+      "userid": "1",
+      "response": "5",
+      "unitid": "777"
     },
     {
       "id": "21",
-      "Qid": "1",
-      "User id": "2",
-      "Response": "3",
-      "Unit no.": "777"
+      "qid": "1",
+      "userid": "2",
+      "response": "3",
+      "unitid": "777"
     },
     {
       "id": "22",
-      "Qid": "2",
-      "User id": "2",
-      "Response": "4",
-      "Unit no.": "777"
+      "qid": "2",
+      "userid": "2",
+      "response": "4",
+      "unitid": "777"
     },
     {
       "id": "23",
-      "Qid": "3",
-      "User id": "2",
-      "Response": "4",
-      "Unit no.": "777"
+      "qid": "3",
+      "userid": "2",
+      "response": "4",
+      "unitid": "777"
     },
     {
       "id": "24",
-      "Qid": "4",
-      "User id": "2",
-      "Response": "3",
-      "Unit no.": "777"
+      "qid": "4",
+      "userid": "2",
+      "response": "3",
+      "unitid": "777"
     },
     {
       "id": "25",
-      "Qid": "1",
-      "User id": "3",
-      "Response": "4",
-      "Unit no.": "777"
+      "qid": "1",
+      "userid": "3",
+      "response": "4",
+      "unitid": "777"
     },
     {
       "id": "26",
-      "Qid": "2",
-      "User id": "3",
-      "Response": "3",
-      "Unit no.": "777"
+      "qid": "2",
+      "userid": "3",
+      "response": "3",
+      "unitid": "777"
     },
     {
       "id": "27",
-      "Qid": "3",
-      "User id": "3",
-      "Response": "5",
-      "Unit no.": "777"
+      "qid": "3",
+      "userid": "3",
+      "response": "5",
+      "unitid": "777"
     },
     {
       "id": "28",
-      "Qid": "4",
-      "User id": "3",
-      "Response": "2",
-      "Unit no.": "777"
+      "qid": "4",
+      "userid": "3",
+      "response": "2",
+      "unitid": "777"
     },
     {
       "id": "29",
-      "Qid": "1",
-      "User id": "4",
-      "Response": "2",
-      "Unit no.": "777"
+      "qid": "1",
+      "userid": "4",
+      "response": "2",
+      "unitid": "777"
     },
     {
       "id": "30",
-      "Qid": "2",
-      "User id": "4",
-      "Response": "4",
-      "Unit no.": "777"
+      "qid": "2",
+      "userid": "4",
+      "response": "4",
+      "unitid": "777"
     },
     {
       "id": "31",
-      "Qid": "3",
-      "User id": "4",
-      "Response": "3",
-      "Unit no.": "777"
+      "qid": "3",
+      "userid": "4",
+      "response": "3",
+      "unitid": "777"
     },
     {
       "id": "32",
-      "Qid": "4",
-      "User id": "4",
-      "Response": "5",
-      "Unit no.": "777"
+      "qid": "4",
+      "userid": "4",
+      "response": "5",
+      "unitid": "777"
     }
   ],
   "User": [
     {
       "id": "1",
-      "Name": "Rohit",
-      "Age": "14",
-      "Address": "Mumbai",
-      "Phone no": "9920367321",
-      "Language": "mr"
+      "name": "Rohit",
+      "age": "14",
+      "address": "Mumbai",
+      "phone": "9920367321",
+      "langauge": "mr"
     },
     {
       "id": "2",
-      "Name": "Manish",
-      "Age": "15",
-      "Address": "Delhi",
-      "Phone no": "9920457321",
-      "Language": "hi"
+      "name": "Manish",
+      "age": "15",
+      "address": "Delhi",
+      "phone": "9920457321",
+      "langauge": "hi"
     },
     {
       "id": "3",
-      "Name": "Harsh",
-      "Age": "13",
-      "Address": "Bangalore",
-      "Phone no": "9920376321",
-      "Language": "bn"
+      "name": "Harsh",
+      "age": "13",
+      "address": "Bangalore",
+      "phone": "9920376321",
+      "langauge": "bn"
     },
     {
       "id": "4",
-      "Name": "Ruchi",
-      "Age": "16",
-      "Address": "Calcutta",
-      "Phone no": "9927867321",
-      "Language": "mr"
+      "name": "Ruchi",
+      "age": "16",
+      "address": "Calcutta",
+      "phone": "9927867321",
+      "langauge": "mr"
     },
     {
       "id": "5",
-      "Name": "Palash",
-      "Age": "10",
-      "Address": "Maharashtra",
-      "Phone no": "9920367901",
-      "Language": "mr"
+      "name": "Palash",
+      "age": "10",
+      "address": "Maharashtra",
+      "phone": "9920367901",
+      "langauge": "mr"
     },
     {
       "id": "6",
-      "Name": "Riya",
-      "Age": "9",
-      "Address": "Punjab",
-      "Phone no": "9920364321",
-      "Language": "hi"
+      "name": "Riya",
+      "age": "9",
+      "address": "Punjab",
+      "phone": "9920364321",
+      "langauge": "hi"
+    }
+  ],
+  "Unit": [
+    { "id": "555", "location": "mumbai" },
+    { "id": "777", "location": "delhi" }
+  ],
+  "Stay": [
+    {
+      "useriD": "1",
+      "unitid": "555",
+      "members": "5",
+      "startDate": "08/05/2016",
+      "endDate": "09/06/2016"
+    },
+    {
+      "useriD": "2",
+      "unitid": "777",
+      "members": "4",
+      "startDate": "08/03/2016",
+      "endDate": "09/05/2016"
+    },
+    {
+      "useriD": "3",
+      "unitid": "555",
+      "members": "3",
+      "startDate": "15/06/2016",
+      "endDate": "09/08/2016"
+    },
+    {
+      "useriD": "4",
+      "unitid": "777",
+      "members": "4",
+      "startDate": "08/09/2016",
+      "endDate": "09/10/2016"
+    },
+    {
+      "useriD": "5",
+      "unitid": "555",
+      "members": "2",
+      "startDate": "08/11/2016",
+      "endDate": "09/12/2016"
+    },
+    {
+      "useriD": "6",
+      "unitid": "777",
+      "members": "3",
+      "startDate": "08/05/2016",
+      "endDate": "09/06/2016"
+    }
+  ],
+  "Donor": [
+    {
+      "id": "1",
+      "phone": "9538532374"
+    },
+    {
+      "id": "2",
+      "phone": "8269517045"
+    },
+    {
+      "id": "3",
+      "phone": "9920368721"
+    },
+    {
+      "id": "4",
+      "phone": "9632553962"
+    },
+    {
+      "id": "5",
+      "phone": "7893569087"
+    },
+    {
+      "id": "6",
+      "phone": "8264135668"
+    }
+  ],
+  "Donate": [
+    {
+      "userid": "1",
+      "unitid": "555"
+    },
+    {
+      "userid": "2",
+      "unitid": "777"
+    },
+    {
+      "userid": "3",
+      "unitid": "555"
+    },
+    {
+      "userid": "4",
+      "unitid": "777"
+    },
+    {
+      "userid": "5",
+      "unitid": "555"
+    },
+    {
+      "userid": "6",
+      "unitid": "777"
     }
   ]
 }

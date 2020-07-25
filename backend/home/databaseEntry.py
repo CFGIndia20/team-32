@@ -32,5 +32,5 @@ def addData():
 	Units = data["Unit"]
 	Stays = data["Stay"]
 	Donors = data["Donor"]
-	Donates = data["Donates"]
+	Donates = data["Donate"]
 	return Questions,Feedbacks,Users,Units,Stays,Donors,Donates

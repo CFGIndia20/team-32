@@ -47,106 +47,52 @@ def feedback(request):
         question = Question.objects.filter(feedback["id"])[0]
         temp = Feedback(id = last_id,question_id = question,user_id = user,unit_no = int(feedback["unit_no"]),response = int(feedback["Response"]))
         temp.save()       
-    
+
+@csrf_exempt 
 def loadData(request):
     if request.method != "POST":
         return JsonResponse({"data":"use post"})
-
+    
     questions,feedbacks,users,units,stays,donors,donates = addData()
+
     for question in questions:
-        temp = Question(id = question["id"],question = question["Question"])
+        temp = Question(id = question["id"],question = question["question"])
         temp.save()
 
-    
     for user in users:
-        temp = User(id = user["id"],name = user["Name"],age = user["Age"],address = user["Address"],phone_no = user["Phone no"],language = user["Language"])
+        temp = User(id = user["id"],name = user["name"],age = user["age"],address = user["address"],phone_no = user["phone"],language = user["langauge"])
         temp.save()
 
     for feedback in feedbacks:
-        user = User.objects.filter(id = int(feedback["User id"]))[0]
-        question = Question.objects.filter(id = int(feedback["Qid"]))[0]
-        temp = Feedback(id = feedback["id"],question_id = question,user_id = user,unit_no = feedback["Unit no."],response = feedback["Response"] )
+        user = User.objects.filter(id = int(feedback["userid"]))[0]
+        question = Question.objects.filter(id = int(feedback["qid"]))[0]
+        temp = Feedback(id = feedback["id"],question_id = question,user_id = user,unit_no = feedback["unitid"],response = feedback["response"] )
         temp.save()
-
+    
     for unit in units:
         temp = Unit(id =int(unit["id"]),location = unit["location"])
         temp.save()
     
     for stay in stays:
         StDate = stay["startDate"]
-        date1 = datetime.strptime(StDate,'%d/%m/%y')
+        date1 = datetime.date(int(StDate[6:]),int(StDate[3:5]),int(StDate[:2]))
         EdDate = stay["endDate"]
-        date2 = datetime.strptime(EdDate,'%d/%m/%y')
-        user = User.objects.filter(id = int(stay["User id"]))[0]
-        unit_no = Unit.objects.filter(id = int(stay["Unit id"]))[0]
+        date2 = datetime.date(int(EdDate[6:]),int(EdDate[3:5]),int(EdDate[:2]))
+        user = User.objects.filter(id = int(stay["useriD"]))[0]
+        unit_no = Unit.objects.filter(id = int(stay["unitid"]))[0]
         temp = Stay(UserID = user,UnitID = unit_no,members = int(stay["members"]),startDate = date1,endDate = date2)
         temp.save()
-    
+
     for donor in donors:
-        temp = Donor(id =int(donor["id"]),phone_no = donor["phoneNo"])
+        temp = Donor(id =int(donor["id"]),phone_no = donor["phone"])
         temp.save()
 
     for donate in donates:
-        unit_no = Unit.objects.filter(id = int(donate["unitId"]))[0]
-        donor_id = Donor.objects.filter(id = int(donate["donorId"]))[0]
+        unit_no = Unit.objects.filter(id = int(donate["unitid"]))[0]
+        donor_id = Donor.objects.filter(id = int(donate["userid"]))[0]
         temp = Donate(unit_no = unit_no,donor_id = donor_id)
         temp.save()
         
-    return JsonResponse({"success":"True"})
-
-@csrf_exempt    
-def loadQuestions(request):
-    if request.method != "POST":
-        return JsonResponse({"data":"use post"})
-
-    questions = addQuestions()
-    for question in questions:
-        temp = Question(id = question["id"],question = question["Question"])
-        temp.save()
-
-    return JsonResponse({"success":"True"})
-
-@csrf_exempt    
-def loadFeedback(request):
-    if request.method != "POST":
-        return JsonResponse({"data":"use post"})
-
-    feedbacks = addFeedbacks()
-    for feedback in feedbacks:
-        user = User.objects.filter(id = int(feedback["User id"]))[0]
-        question = Question.objects.filter(id = int(feedback["Qid"]))[0]
-        temp = Feedback(id = feedback["id"],question_id = question,user_id = user,unit_no = feedback["Unit no."],response = feedback["Response"] )
-        temp.save()
-
-    return JsonResponse({"success":"True"})
-
-@csrf_exempt    
-def loadUser(request):
-    if request.method != "POST":
-        return JsonResponse({"data":"use post"})
-
-    users = addUsers()
-
-    for user in users:
-        temp = User(id = user["id"],name = user["Name"],age = user["Age"],address = user["Address"],phone_no = user["Phone no"],language = user["Language"])
-        temp.save()
-
-    return JsonResponse({"success":"True"})
-
-@csrf_exempt
-def loadStays(request):
-    if request.method != "POST":
-        return JsonResponse({"data":"use post"})
-
-    stays = addStays()
-    for stay in stays:
-        StDate = stay["startDate"]
-        date1 = datetime.strptime(StDate,'%d/%m/%y')
-        EdDate = stay["endDate"]
-        date2 = datetime.strptime(EdDate,'%d/%m/%y')
-        temp = Stays(UserID = stay["UserID"],UnitID = stay["UnitID"], members = stay["members"], startDate = date1, endDate = date2)
-        temp.save()
-
     return JsonResponse({"success":"True"})
 
 def translate(sourceText, targetLanguage):
