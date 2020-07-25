@@ -16,13 +16,18 @@ import soundfile
 # Create your views here.
 
 def questions(request):
+    obj =  json.load(request.POST)
+    phone_no = obj["Phone_no"]
+    user = User.objects.filter(phone_no = phone_no)[0]
+
     jsonResponse = {}
     questionList = []
     questions = Question.objects.all()
     for question in questions:
         json = {
             'Id':question.id,
-            'Question':question.question
+            'Question':question.question,
+            'LangQuestion': "Hi",
         }
         questionList.append(json)
     
@@ -59,46 +64,21 @@ def loadFeedback(request):
 
     return JsonResponse({"success":"True"})
 
-<<<<<<< HEAD
 @csrf_exempt    
 def loadUser(request):
-=======
-@csrf_exempt
-def loadUsers(request)
->>>>>>> 641740711cd87e44fcbba249f7878636fb7bf12b
     if request.method != "POST":
         return JsonResponse({"data":"use post"})
 
     users = addUsers()
-<<<<<<< HEAD
 
     for user in users:
         temp = User(id = user["id"],name = user["Name"],age = user["Age"],address = user["Address"],phone_no = user["Phone no"],language = user["Language"])
-=======
-    for user in users:
-        temp = Users(id = user["id"],name = user["name"],age = user["Age"],phone_no =  user["phone_no"],language = user[language])
-        temp.save()
-
-    return JsonResponse({"success":"True"})
-    
-@csrf_exempt
-def loadUnits(request)
-    if request.method != "POST":
-        return JsonResponse({"data":"use post"})
-
-    units = addUnits()
-    for unit in units:
-        temp = Units(id = unit["id"],location = users["location"])
->>>>>>> 641740711cd87e44fcbba249f7878636fb7bf12b
         temp.save()
 
     return JsonResponse({"success":"True"})
 
-<<<<<<< HEAD
-""" def translate(sourceText, targetLanguage):
-=======
 @csrf_exempt
-def loadStays(request)
+def loadStays(request):
     if request.method != "POST":
         return JsonResponse({"data":"use post"})
 
@@ -112,9 +92,8 @@ def loadStays(request)
         temp.save()
 
     return JsonResponse({"success":"True"})
-=======
+
 def translate(sourceText, targetLanguage):
->>>>>>> 641740711cd87e44fcbba249f7878636fb7bf12b
     client = translate_v2.Client()
     response = client.translate(sourceText,target_language=target_language)
     return response["translatedText"]
@@ -125,8 +104,6 @@ def textToSpeech(sourceText, sourceLanguage):
 
 def speechToText(local_file_path, language):
     audio_samples, sample_rate = soundfile.read(local_file_path, dtype='int16')
-<<<<<<< HEAD
-    print(sample_rate)
     client = speech_v1.SpeechClient()
 
     # local_file_path = 'resources/brooklyn_bridge.raw'
@@ -149,44 +126,12 @@ def speechToText(local_file_path, language):
     audio = {"content": content}
 
     response = client.recognize(config, audio)
-    print(response)
-    resultString="";
+    resultString=""
     for result in response.results:
         # First alternative is the most probable result
         alternative = result.alternatives[0]
         resultString = resultString + format(alternative.transcript)
 
     return resultString
- """
-=======
-    	client = speech_v1.SpeechClient()
 
-    	# local_file_path = 'resources/brooklyn_bridge.raw'
-
-    	# The language of the supplied audio
-    	language_code = language
-
-    	# Sample rate in Hertz of the audio data sent
-    	sample_rate_hertz = sample_rate
-    	# Encoding of audio data sent. This sample sets this explicitly.
-    	# This field is optional for FLAC and WAV audio formats.
-    	encoding = enums.RecognitionConfig.AudioEncoding.LINEAR16
-    	config = {
-    		"language_code": language_code,
-    		"sample_rate_hertz": sample_rate_hertz,
-    		"encoding": encoding,
-    	}
-    	with io.open(local_file_path, "rb") as f:
-    		content = f.read()
-    	audio = {"content": content}
-
-    	response = client.recognize(config, audio)
-    	resultString=""
-    	for result in response.results:
-    		# First alternative is the most probable result
-    		alternative = result.alternatives[0]
-    		resultString = resultString + format(alternative.transcript)
-
-    	return resultString
->>>>>>> origin/master
->>>>>>> 641740711cd87e44fcbba249f7878636fb7bf12b
+print(translate("How was cleanliness?",'hi'))
