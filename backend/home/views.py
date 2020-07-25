@@ -27,7 +27,7 @@ def questions(request,phone_no):
         json = {
             'Id':question.id,
             'Question':question.question,
-            'LangQuestion': ,
+            'LangQuestionText': translate(),
         }
         questionList.append(json)
     
@@ -105,7 +105,7 @@ def loadStays(request):
 
 def translate(sourceText, targetLanguage):
     client = translate_v2.Client()
-    response = client.translate(sourceText,target_language=target_language)
+    response = client.translate(sourceText,target_language=targetLanguage)
     return response["translatedText"]
 
 def textToSpeech(sourceText, sourceLanguage):
