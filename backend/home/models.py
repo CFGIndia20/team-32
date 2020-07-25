@@ -19,3 +19,15 @@ class Feedback(models.Model):
     response = models.IntegerField()
     unit_no = models.IntegerField()
 
+class Units(models.Model):
+    id = models.IntegerField(primary_key=True)
+    location = models.CharField(max_length=30)
+
+class Stays(models.Model):
+    UserID = models.ForeignKey(User,on_delete = models.CASCADE)
+    UnitID = models.ForeignKey(Units, on_delete = CASCADE)
+    members = models.IntegerField()
+    startDate = models.#DD/MM/YYYY
+    endDate = models.#DD/MM/YYYY
+
+
