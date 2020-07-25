@@ -15,7 +15,10 @@ import soundfile
 
 # Create your views here.
 
-def questions(request):
+def questions(request,phone_no):
+    user = User.objects.filter(phone_no = phone_no)[0]
+    lang = user.language
+
     jsonResponse = {}
     questionList = []
     
@@ -24,6 +27,7 @@ def questions(request):
         json = {
             'Id':question.id,
             'Question':question.question,
+            'LangQuestionText': translate(),
         }
         questionList.append(json)
     
@@ -87,7 +91,7 @@ def loadData(request):
         donor_id = Donor.objects.filter(id = int(donate["donorId"]))[0]
         temp = Donate(unit_no = unit_no,donor_id = donor_id)
         temp.save()
-
+        
     return JsonResponse({"success":"True"})
 
 @csrf_exempt    
