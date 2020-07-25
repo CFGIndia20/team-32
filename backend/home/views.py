@@ -24,10 +24,14 @@ def questions(request,phone_no):
     
     questions = Question.objects.all()
     for question in questions:
+
+        langQuestionText = translate(question.question, lang)
+        langQuestionAudio = translate(langQuestionText,lang)
         json = {
             'Id':question.id,
             'Question':question.question,
-            'LangQuestionText': translate(),
+            'LangQuestionText': langQuestionText,
+            'LangQuestionAudio': langQuestionAudio,
         }
         questionList.append(json)
     
@@ -98,7 +102,7 @@ def loadData(request):
 def translate(sourceText, targetLanguage):
     client = translate_v2.Client()
     response = client.translate(sourceText,target_language=targetLanguage)
-    return response["translatedText"]
+    return format(response["translatedText"])
 
 def textToSpeech(sourceText, sourceLanguage):
     obj = gTTS(text=sourceText, slow= False, lang=sourceLanguage)
@@ -135,4 +139,3 @@ def speechToText(local_file_path, language):
         resultString = resultString + format(alternative.transcript)
 
     return resultString
-
