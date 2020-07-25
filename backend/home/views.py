@@ -16,9 +16,9 @@ import soundfile
 # Create your views here.
 
 def questions(request):
-    obj =  json.load(request.POST)
-    phone_no = obj["Phone_no"]
-    user = User.objects.filter(phone_no = phone_no)[0]
+#     obj =  json.load(request.POST)
+#     phone_no = obj["Phone_no"]
+#     user = User.objects.filter(phone_no = phone_no)[0]
 
     jsonResponse = {}
     questionList = []
@@ -27,7 +27,7 @@ def questions(request):
         json = {
             'Id':question.id,
             'Question':question.question,
-            'LangQuestion': "Hi",
+            'LangQuestionText': translate(),
         }
         questionList.append(json)
     
@@ -95,7 +95,7 @@ def loadStays(request):
 
 def translate(sourceText, targetLanguage):
     client = translate_v2.Client()
-    response = client.translate(sourceText,target_language=target_language)
+    response = client.translate(sourceText,target_language=targetLanguage)
     return response["translatedText"]
 
 def textToSpeech(sourceText, sourceLanguage):

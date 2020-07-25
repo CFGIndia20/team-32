@@ -238,7 +238,7 @@
       "Age": "14",
       "Address": "Mumbai",
       "Phone no": "9920367321",
-      "Language": "Marathi"
+      "Language": "mr"
     },
     {
       "id": "2",
@@ -246,7 +246,7 @@
       "Age": "15",
       "Address": "Delhi",
       "Phone no": "9920367321",
-      "Language": "Hindi"
+      "Language": "hi"
     },
     {
       "id": "3",
@@ -254,7 +254,7 @@
       "Age": "13",
       "Address": "Bangalore",
       "Phone no": "9920367321",
-      "Language": "Benga"
+      "Language": "bn"
     },
     {
       "id": "4",
@@ -262,7 +262,7 @@
       "Age": "16",
       "Address": "Calcutta",
       "Phone no": "9920367321",
-      "Language": "Marathi"
+      "Language": "mr"
     }
   ]
 }
