@@ -15,27 +15,37 @@ import soundfile
 
 # Create your views here.
 
-def questions(request):
-    obj =  json.load(request.POST)
-    phone_no = obj["Phone_no"]
+def questions(request,phone_no):
     user = User.objects.filter(phone_no = phone_no)[0]
+    lang = user.language
 
     jsonResponse = {}
     questionList = []
+    
     questions = Question.objects.all()
     for question in questions:
         json = {
             'Id':question.id,
             'Question':question.question,
-            'LangQuestion': "Hi",
+            'LangQuestion': ,
         }
         questionList.append(json)
     
     jsonResponse['Questions'] = questionList
     return JsonResponse(jsonResponse)
 
-#@csrf_exempt 
-#def feedback(request):
+@csrf_exempt 
+def feedback(request):
+    obj = json.load(reques.POST)
+    phone_no = obj["phone_no"]
+    user = User.objects.filter(phone_no = phone_no)[0]
+    feedbacks = obj["Feedback"]
+    f = Feedback.objects.all().order_by('id')
+    last_id = len(f)+1
+    
+    for feedback in feedbacks:
+        question = Question.objects.filter(feedback["id"])[0]
+        temp = Feedback(id = last_id,question_id = question,user_id = user,unit_no = int(feedback["unit_no"]),response = int(feedback["Response"]) )
     
 
 @csrf_exempt    
@@ -134,4 +144,3 @@ def speechToText(local_file_path, language):
 
     return resultString
 
-print(translate("How was cleanliness?",'hi'))
