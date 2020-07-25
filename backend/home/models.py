@@ -11,7 +11,7 @@ class User(models.Model):
     address = models.CharField(max_length = 500)
     phone_no = models.CharField(max_length = 15)
     language = models.CharField(max_length = 20)
-    
+
 class Feedback(models.Model):
     id = models.IntegerField(primary_key = True)
     question_id = models.ForeignKey(Question, on_delete = models.CASCADE)
@@ -25,9 +25,9 @@ class Units(models.Model):
 
 class Stays(models.Model):
     UserID = models.ForeignKey(User,on_delete = models.CASCADE)
-    UnitID = models.ForeignKey(Units, on_delete = CASCADE)
+    UnitID = models.ForeignKey(Units, on_delete = models.CASCADE)
     members = models.IntegerField()
-    startDate = models.#DD/MM/YYYY
-    endDate = models.#DD/MM/YYYY
+    startDate = models.DateField()
+    endDate = models.DateField()
 
 
