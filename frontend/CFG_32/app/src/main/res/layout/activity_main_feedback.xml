@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    tools:context="com.thecodecity.cfg_32.Feedback">
+    <TextView
+        android:id="@+id/text_view_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question: 1"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black" />
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        app:showLine="true"
+
+        />
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="111dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:width="1000dp"
+        android:text="Next"
+        android:onClick="clmeth"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="111dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginRight="250dp"
+        android:layout_marginBottom="20dp"
+        android:width="1000dp"
+        android:text="Back"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:text=""
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
+        />
+</RelativeLayout>
