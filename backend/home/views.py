@@ -14,6 +14,7 @@ import io
 import soundfile
 from .report import send_message
 import threading
+import sched, time
 
 # Create your views here.
 
@@ -41,20 +42,26 @@ def questions(request,phone_no):
     return JsonResponse(jsonResponse)
 
 def reports():
+
+    print("In REPORTS")
     string = ""
     units = Unit.objects.all()
     for unit in units:
         users = Stay.objects.filter(UnitID = unit.id)
-        print(unit.id)
+        string="*St. Jude India Childcare Centres*\n\nThanks for your help!\n"
+        count=0
         for user in users:
+            count=count+1
             currentUser = User.objects.filter(id = user.UserID.id)[0]
-            string += "Age = "+str(currentUser.age)+ "  Number of people = "+str(user.members)+"  Duration: "+ str(user.startDate)+ " - "+ str(user.endDate)+ "\n"
+            string += "\nPatient #" +str(count)+ "\nAge = "+str(currentUser.age)+ "\nNumber of people = "+str(user.members)+"\nDuration: "+ str(user.startDate)+ " - "+ str(user.endDate)+ "\n\n"
 
         donors = Donate.objects.filter(unit_no = unit.id)
         for donor in donors:
             currentDonor = Donor.objects.filter(id = donor.donor_id.id)[0]
             phoneNumber = "whatsapp:+91" + currentDonor.phone_no
             send_message(string,phoneNumber)
+            time.sleep(0.5)
+#     s.enter(10, 1, reports)
 
 @csrf_exempt 
 def feedback(request):
@@ -160,3 +167,7 @@ def speechToText(local_file_path, language):
 
 t = threading.Timer(10.0, reports)
 t.start()
+
+# s = sched.scheduler(time.time, time.sleep)
+# s.enter(10, 1, reports)
+# s.run()
